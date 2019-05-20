@@ -622,9 +622,20 @@ readstdin(void)
 		}
 	}
 	if (items)
+	{
 		items[i].text = NULL;
+		if (pass_signlet && i == 1)
+		{
+			puts(items[0].text);
+			cleanup();
+			exit(0);
+		}
+	}
 	else
+	{
+		cleanup();
 		exit(1);
+	}
 	inputw = items ? TEXTW(items[imax].text) : 0;
 	lines = MIN(lines, i);
 }
@@ -801,6 +812,8 @@ int main(int argc, char *argv[])
 			topbar = 0;
 		else if (!strcmp(argv[i], "-r")) /* exit with error status if input from stdin is empty */
 			require_input = 1;
+		else if (!strcmp(argv[i], "-s")) /* print only option if just one was provided on stdin */
+			pass_signlet = 1;
 		else if (!strcmp(argv[i], "-f")) /* grabs keyboard before reading stdin */
 			fast = 1;
 		else if (!strcmp(argv[i], "-i"))

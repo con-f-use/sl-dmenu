@@ -3,7 +3,7 @@
 
 static int topbar = 1;		  /* -b  option; if 0, dmenu appears at bottom     */
 static int require_input = 0; /* -r  option; if 1, dmenu exits with code 1 if no input on stdin */
-static int pass_signlet = 0;  /* -s  option; if 1, dmenu immediatly prints if only one menu item read */
+static int pass_singlet = 0;  /* -s  option; if 1, dmenu immediatly prints if only one menu item read */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
 	"monospace:size=10"};
